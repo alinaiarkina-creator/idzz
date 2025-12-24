@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Моя відпустка</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="app">
+  <header class="top">
+    <div class="ofCard">
+      <div class="ofRow">
+        <div class="ofLeft">
+          <label for="ofInput">Номер співробітника (ОФ)</label>
+          <input id="ofInput" type="text" placeholder="ОФ45" maxlength="10" />
+          <div class="hint">Формат: <b>ОФ + число</b> (напр. ОФ45, ОФ555)</div>
+          <div id="ofError" class="warn" hidden></div>
+        </div>
+
+        <div class="ofRight">
+          <div class="miniTitle">Залишок відпустки</div>
+          <div class="miniValue"><span id="daysLeft">—</span> днів</div>
+
+          <div class="miniTitle">У годинах</div>
+          <div class="miniValue"><span id="hoursLeft">—</span> год</div>
+
+          <div class="bar"><div id="daysBar" class="fill"></div></div>
+        </div>
+      </div>
+
+      <div id="adminRow" class="adminRow" hidden>
+        <div class="adminControls">
+          <div class="field">
+            <label for="adminDays">Встановити залишок (дні)</label>
+            <input id="adminDays" type="number" min="0" value="15" />
+          </div>
+          <div class="field">
+            <label for="hoursPerDay">Годин/день</label>
+            <input id="hoursPerDay" type="number" min="1" step="0.5" value="8" />
+          </div>
+          <button id="adminSaveBtn" type="button">Зберегти залишок для цього ОФ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="title">
+      <h1>Моя відпустка 🌴</h1>
+    </div>
+  </header>
+
+  
+  <main class="grid">
+
+
+    <section class="card">
+      <h2>Калькулятор відпустки</h2>
+
+      <div class="form">
+        <div class="field">
+          <label for="startDate">Дата початку</label>
+          <input id="startDate" type="date" />
+        </div>
+
+        <div class="field">
+          <label for="durationDays">Тривалість (дні)</label>
+          <input id="durationDays" type="number" min="1" step="1" placeholder="напр. 10" />
+        </div>
+
+        <div class="field">
+          <label for="endDate">Дата завершення</label>
+          <input id="endDate" type="date" />
+        </div>
+
+        <div class="actions">
+          <button id="calcBtn" type="button">Розрахувати</button>
+          <button id="clearBtn" type="button" class="ghost">Очистити</button>
+        </div>
+      </div>
+
+      <div id="warn" class="warn" hidden></div>
+      <div id="result" class="result"></div>
+    </section>
+
+    <section class="card">
+      <h2>Святкові дні</h2>
+      <p class="muted small">Свята <b>не рахуються</b> у відпустку під час розрахунків.</p>
+
+      <div class="holidayTools">
+        <input id="holidayPicker" type="date" />
+        <button id="addHolidayBtn" type="button">Додати</button>
+        <button id="clearHolidaysBtn" type="button" class="ghost">Очистити</button>
+      </div>
+
+      <textarea id="holidaysArea" rows="7"
+        placeholder="2025-01-01
+2025-03-08"></textarea>
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
